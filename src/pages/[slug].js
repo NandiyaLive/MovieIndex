@@ -10,7 +10,10 @@ export default function Post({ slug, rawData, langData }) {
   const lang = JSON.parse(langData);
 
   const api_key = process.env.API_KEY;
+  const test_env = process.env.TEST;
   const [movieData, setMovieData] = useState([]);
+  
+  console.log(test_env)
 
   useEffect(() => {
     fetch(
