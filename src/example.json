@@ -1,0 +1,33 @@
+{
+  "title": "",
+  "url": "",
+  "poster": "",
+  "date": "",
+  "tgLink": "",
+  "downloadLinks": [
+    {
+      "title": "1080p x265 10bit",
+      "file_size": "",
+      "index_link": "",
+      "anonfiles": ""
+    },
+    {
+      "title": "720p x265 10bit",
+      "file_size": "",
+      "index_link": "",
+      "anonfiles": ""
+    },
+    {
+      "title": "1080p x264",
+      "file_size": "",
+      "index_link": "",
+      "anonfiles": ""
+    },
+    {
+      "title": "720p x264",
+      "file_size": "",
+      "index_link": "",
+      "anonfiles": ""
+    }
+  ]
+}
