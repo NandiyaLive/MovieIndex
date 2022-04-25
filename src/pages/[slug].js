@@ -22,6 +22,8 @@ export default function Post({ slug, rawData, langData }) {
         console.log(err.message);
       });
   }, []);
+  
+  console.log(movieData)
 
   return (
     <>
