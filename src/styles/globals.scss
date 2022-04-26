@@ -17,13 +17,13 @@ a {
 }
 
 .container {
-  max-width: min(100% - 1rem, 50rem);
+  max-width: min(100% - 1.5rem, 50rem);
   margin: auto;
 }
 
 .navbar {
   height: 5.5rem;
-  padding: 1.5rem 1rem;
+  padding-top: 1.5rem;
 
   .container {
     display: flex;
@@ -55,7 +55,7 @@ a {
 
 .home-page {
   .list-container {
-    max-width: 50rem;
+    max-width: 52rem;
     margin: auto;
     width: 95%;
 
@@ -137,7 +137,7 @@ a {
           display: flex;
           align-items: center;
           font-weight: 400;
-          padding-top: 0.2rem;
+          padding-top: 0.4rem;
 
           p {
             font-size: 1rem;
@@ -240,6 +240,10 @@ a {
             text-align: center;
           }
 
+          .movie-details {
+            justify-content: center;
+          }
+
           .d-links,
           .details {
             margin-top: 1.5rem;
@@ -249,8 +253,6 @@ a {
 
         .left {
           .img-container {
-            width: 70%;
-            height: 45vh;
             left: 50%;
             right: 50%;
             transform: translate(-50%, 0);
