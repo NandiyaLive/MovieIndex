@@ -2,31 +2,21 @@ import fs from "fs";
 import path from "path";
 import Head from "next/head";
 import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect } from "react";
 
 export default function Post({ slug, rawData, langData }) {
   const data = JSON.parse(rawData);
   const lang = JSON.parse(langData);
-
-  const api_key = process.env.API_KEY;
-  const test_env = process.env.TEST;
   const [movieData, setMovieData] = useState([]);
-  
-  console.log(test_env)
 
   useEffect(() => {
-    fetch(
-      `https://api.themoviedb.org/3/movie/${data["movie_id"]}?api_key=${api_key}&language=en-US`
-    )
+    fetch(`api/tmdb/${data["movie_id"]}`)
       .then((response) => response.json())
       .then((tmdbData) => setMovieData(tmdbData))
       .catch((err) => {
         console.log(err.message);
       });
   }, []);
-  
-  console.log(movieData)
 
   return (
     <>
@@ -87,10 +77,14 @@ export default function Post({ slug, rawData, langData }) {
               <h1>{data["title"]}</h1>
               <div className="movie-details">
                 <p>
-                  {movieData["release_date"]} <span>•</span>{" "}
-                  {lang[movieData["original_language"]]} <span>•</span>{" "}
-                  {movieData["runtime"]}Min
+                  {movieData["release_date"]}
+                  <span>•</span>
                 </p>
+                <p>
+                  {lang[movieData["original_language"]]}
+                  <span>•</span>
+                </p>
+                <p>{movieData["runtime"]}Min</p>
               </div>
 
               <div className="d-links">
@@ -135,6 +129,15 @@ export default function Post({ slug, rawData, langData }) {
                   </li>
                 </ul>
               </div>
+
+              {data["note"] ? (
+                <div className="notes">
+                  <p>Notes</p>
+                  <ul>
+                    <li>{data["note"]}</li>
+                  </ul>
+                </div>
+              ) : null}
 
               <div className="details">
                 <p>More Details</p>
@@ -199,10 +202,7 @@ export async function getStaticProps({ params: { slug } }) {
     "utf-8"
   );
 
-  const langData = fs.readFileSync(
-    path.join("src/lib", "lang.json"),
-    "utf-8"
-  );
+  const langData = fs.readFileSync(path.join("src/lib", "lang.json"), "utf-8");
 
   return {
     props: {
